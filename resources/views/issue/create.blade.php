@@ -1,12 +1,15 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Issues</title>
+	<title>Create Issue</title>
 </head>
 <body>
-	<h1>Issues</h1>
- 	<lable>requester detail issue : </label>
-		<textarea name="issue"></textarea> <br><br>
-   		<input type="submit" value="Add New Issues"> 
+	<h1>Create New Issue.</h1>
+	{!! Form::open(['url' => 'issue']) !!}
+
+		@include('issue._form')
+
+	    {!! Form::submit('Add New Issue') !!}
+	{!! Form::close() !!}
 </body>
 </html>
