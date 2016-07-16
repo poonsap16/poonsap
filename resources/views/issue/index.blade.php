@@ -3,15 +3,17 @@
 	<title>List Issues</title>
 </head>
 <body>
-	<h1>Issues index</h1>
-	<!-- <a href="/poonsap16/staffs/create">List Issues</a> -->
-	
+	<h1>Issues List index</h1>
+	<hr>
+	<a href="/issue/create">Add New Issue.</a>
+	<hr>
 	<table>
 		<thead>
 			<tr>
-				<th>id</th>
-				<th>requster</th>
-				<th>requester_detail_issue</th>
+				<th style="background:#33CCFF">id</th>
+				<th style="background:#33CCFF">requster</th>
+				<th style="background:#33CCFF">requester_detail_issue</th>
+				<th style="background:#33CCFF">action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,9 +24,9 @@
 				<tr style="background-color:#F3F781">
 				@endif
 					<td>{{$issue->id}}</td>
-					<td>{{$issue->requster}}</td>
+					<td>{{$issue->requester}}</td>
 					<td>{{$issue->requester_detail_issue}}</td>
-					<td><a href="/issues/{{$issue->id}}/edit">Edit</a></td>
+					<td><a href="/issue/{{$issue->id}}/edit">Edit</a></td>
 				</tr>
 			@endforeach
 		</tbody>

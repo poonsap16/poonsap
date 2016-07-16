@@ -42,7 +42,9 @@ class IssuesController extends Controller
      */
     public function store()
     {
-        //
+        $input = Request::all();
+        issues::create($input);
+        return redirect('issue');
     }
 
     /**
@@ -64,7 +66,9 @@ class IssuesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $issues = issues::find($id);
+        //$services = service_types::all();
+        return view('issue/edit', compact('issues'));
     }
 
     /**
@@ -74,10 +78,14 @@ class IssuesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update($id)
     {
-        //
+        $input = Request::all();
+        $issues = issues::find($id);
+        $issues->update($input);
+        return redirect('issue');
     }
+
 
     /**
      * Remove the specified resource from storage.
