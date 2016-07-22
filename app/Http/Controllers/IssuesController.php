@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
-use Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\issues;
@@ -40,11 +39,11 @@ class IssuesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        $input = Request::all();
-        issues::create($input);
+        \App\issues::create($request->all());
         return redirect('issue');
+
     }
 
     /**
@@ -67,8 +66,10 @@ class IssuesController extends Controller
     public function edit($id)
     {
         $issues = issues::find($id);
-        //$services = service_types::all();
-        return view('issue/edit', compact('issues'));
+        $serviceType = \App\ServiceType::lists('name','id');
+        $serviceDomain = \App\ServiceDomain::lists('name','id');
+        $issueStatus = \App\IssueStatus::lists('name','id');
+        return view('issue/edit', compact('issues', 'serviceType', 'serviceDomain','issueStatus'));
     }
 
     /**
@@ -78,11 +79,14 @@ class IssuesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+
+    public function update(Request $request, $id)
     {
-        $input = Request::all();
+        //$input = Request::all();
         $issues = issues::find($id);
-        $issues->update($input);
+        //$issues->update($input);
+        $issues->update($request->all());
+
         return redirect('issue');
     }
 
@@ -97,4 +101,5 @@ class IssuesController extends Controller
     {
         //
     }
+
 }

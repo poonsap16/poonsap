@@ -1,12 +1,13 @@
-<html>
-<head>
-	<title>List Issues</title>
-</head>
-<body>
-	<h1>Issues List index</h1>
+@extends('issue.app')
+
+@section('title','List All Issue')
+
+@section('content')
+
+	<h1>Issues List.</h1>
 	<hr>
 	<a href="/issue/create">Add New Issue.</a>
-	<hr>
+	<br><br>
 	<table>
 		<thead>
 			<tr>
@@ -34,5 +35,3 @@
 
 	</table>
 
-</body>
-</html>

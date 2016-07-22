@@ -1,16 +1,15 @@
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Edit</title>
-</head>
-<body>
-    <h1>Edit {{$issues->id}} Data.</h1>
-    {!! Form::model($issues,['method' => 'PATCH', 'url' => 'issue' . $issues->id]) !!}
+@extends('issue.app')
 
-        @include('issue._formedit')
+@section('title','Edit Issue')
 
-        {!! Form::submit('Save') !!}
-    {!! Form::close() !!}
+@section('content')
+<h1>Edit Issue {{$issues->id}}.</h1>
+<hr/>
+{!! Form::model($issues,['method' => 'POST', 'url' => 'issue/' . $issues->id]) !!}
 
-</body>
-</html>
+	@include('issue._form')
+
+	{!! Form::submit('Save') !!}
+
+{!! Form::close() !!}
+@endsection

@@ -8,6 +8,7 @@
 {!! Form::label('service_type', 'service_type_id : ') !!}
 {!! Form::select('service_type_id',['เลือกประเภท',1,2,3,4]) !!}<br><br>
 
+
 {!! Form::label('service_domain', 'service_domain_id : ') !!}
 {!! Form::select('service_domain_id',['เลือกประเภท',1,2,3,4], null ) !!}<br><br>
 

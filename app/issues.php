@@ -23,4 +23,11 @@ class issues extends Model
     	'service_by',
     	'requester_rate_service',
     ]; 
+
+    public function getServiecTypeName() {
+        $serviceType = \App\issues::find($this->attributes['service_type_id']);
+        return $service_type->name;
+    }
+
+
 }

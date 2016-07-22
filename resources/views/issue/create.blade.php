@@ -1,15 +1,18 @@
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Create Issue</title>
-</head>
-<body>
-	<h1>Create New Issue.</h1>
-	{!! Form::open(['url' => 'issue']) !!}
+@extends('issue.app')
 
-		@include('issue._form')
+@section('title','From Create New Issue')
 
-	    {!! Form::submit('Add New Issue') !!}
-	{!! Form::close() !!}
-</body>
-</html>
+@section('content')
+<h1>Create New Issue.</h1>
+<hr/>
+
+{!! Form::open(['url' => url('issue')])!!}
+	
+
+	{!! Form::label('requester_detail_issue', 'ระบุปัญหาการใข้งาน : ') !!}
+	{!! Form::textarea('requester_detail_issue', null, ['rows' => 5, 'cols' => 50]) !!}<br><br>
+
+	{!! Form::submit('Add New Issue')!!}
+
+{!! Form::close()!!}
+@endsection
