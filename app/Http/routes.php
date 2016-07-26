@@ -30,6 +30,35 @@ Route::get('/', function () {
 // Route::get('vote',function(){
 // 	return view('issue/vote');
 // });
+Route::get('issues', function(){
+	$issues = \App\issues::all();
+	return view('issues.index', compact('issues'));
+
+});
+
+Route::post('issues/{id}', function($id){
+ 	$issues = \App\issues::find($id);
+ 	$issues->update(Request::all());
+ 	return redirect(url ('issues'));
+ });
+
+Route::get('issues/{id}/edit', function($id){
+	$issues = \App\issues::find($id);
+	$serviceTypes = \App\ServiceType::all();
+    $serviceDomains = \App\ServiceDomain::all();
+    $issueStatus = \App\IssueStatus::all();
+	return view('issues.edit', compact('issues', 'serviceTypes', 'serviceDomains','issueStatus'));
+});
+
+Route::post('issues', function(){
+	\App\issues::create(Request::all());
+	return redirect(url ('issues'));
+});
+
+Route::get('issues/create', function(){
+	$issues = \App\issues::all();
+	return view('issues.create', compact('issues', 'serviceTypes', 'serviceDomains','issueStatus'));
+});
 
 Route::get('issue','IssuesController@index');
 Route::get('issue/create','IssuesController@create');
